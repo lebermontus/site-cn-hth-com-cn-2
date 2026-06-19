@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华体会 — 杂志视角·知识导读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1060px;
+            margin: 0 auto;
+        }
+
+        /* —— Hero 区域 —— */
+        .hero {
+            background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+            border-radius: 28px;
+            padding: 3.5rem 2.5rem 3rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid #d1d5db;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -70px;
+            right: -70px;
+            width: 240px;
+            height: 240px;
+            background: rgba(165, 180, 252, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 450;
+            letter-spacing: 0.02em;
+            color: #111827;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            font-weight: 580;
+            color: #2563eb;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #4b5563;
+            max-width: 74%;
+            margin-top: 0.6rem;
+            border-left: 4px solid #2563eb;
+            padding-left: 1.2rem;
+            background: rgba(255,255,255,0.3);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* —— 卡片体系 —— */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e5ea;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02), 0 8px 20px rgba(0,0,0,0.02);
+            padding: 2rem 2.2rem;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05), 0 4px 10px rgba(0,0,0,0.02);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 480;
+            margin-bottom: 1.2rem;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 28px;
+            background: #2563eb;
+            border-radius: 6px;
+            margin-right: 0.35rem;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card .meta-tag {
+            display: inline-block;
+            background: #eef2f6;
+            border-radius: 30px;
+            padding: 0.25rem 0.9rem;
+            font-size: 0.8rem;
+            color: #374151;
+            border: 1px solid #d4d9e0;
+            margin-right: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        /* —— 引用/高亮块 —— */
+        .insight {
+            background: #f8fafc;
+            border-left: 6px solid #2563eb;
+            border-radius: 14px;
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0 1rem;
+            color: #1f2937;
+            font-style: normal;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02);
+        }
+
+        .insight strong {
+            color: #1d4ed8;
+        }
+
+        /* —— 页尾 —— */
+        .footer-note {
+            margin-top: 2.5rem;
+            padding: 1.2rem 0 0.2rem;
+            border-top: 1px solid #d1d5db;
+            font-size: 0.95rem;
+            color: #4b5563;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.8rem;
+        }
+
+        .footer-note a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 460;
+            border-bottom: 1px dotted #93b4f5;
+        }
+
+        .footer-note a:hover {
+            border-bottom-style: solid;
+            color: #1e40af;
+        }
+
+        /* —— 响应式 —— */
+        @media (max-width: 720px) {
+            body { padding: 1.2rem 0.8rem; }
+            .hero { padding: 2.2rem 1.5rem 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero .sub { max-width: 100%; font-size: 1rem; }
+            .card { padding: 1.6rem 1.4rem; }
+            .card h2 { font-size: 1.3rem; }
+            .footer-note { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.7rem; }
+            .card { padding: 1.2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>关于<span>华体会</span> · 知识侧写</h1>
+        <div class="sub">
+            从日常查询与对照的视角，梳理信息脉络，提供延伸阅读的切口。
+        </div>
+    </div>
+
+    <!-- 卡片 1 —— 背景与日常查阅 -->
+    <div class="card">
+        <h2>背景：查询与对照的起点</h2>
+        <p>
+            在信息检索与兴趣驱动的浏览中，我们常常需要从一个稳定的参照点出发。<strong>华体会</strong>作为一处持续更新的信息聚合空间，常被用作内容对照与话题追踪的起点。无论是横向比较不同领域的表述，还是回溯某类资讯的演进，这个站点都提供了一种可供查阅的框架。
+        </p>
+        <div class="insight">
+            <strong>日常场景</strong> · 当你需要快速核验某一表述、寻找同类话题的覆盖维度，或者仅仅想在开放文本中延展自己的知识边界，<a href="https://site-cn-hth.com.cn">华体会</a>可作为一趟安静查阅的起点。
+        </div>
+        <p>
+            页面结构清晰且条目分明，适合读者按需跳转，而不是被动接收推送。这种「主动查阅」的模式，恰恰契合了许多人持续学习与兴趣扩散的习惯。
+        </p>
+    </div>
+
+    <!-- 卡片 2 —— 内容特征 + 延伸阅读价值 -->
+    <div class="card">
+        <h2>内容特征：分类与延伸的可能</h2>
+        <p>
+            从专题分类到条目编排，华体会的内部逻辑偏向于「主题聚合」而非线性罗列。这意味着读者可以基于某一兴趣节点，沿着站内链接与相似条目继续深入，形成属于自己的阅读路径。
+        </p>
+        <p>
+            <span class="meta-tag">主题对照</span>
+            <span class="meta-tag">资讯索引</span>
+            <span class="meta-tag">背景梳理</span>
+            <span class="meta-tag">延伸入口</span>
+        </p>
+        <p>
+            对于习惯在阅读中做笔记、画关联图谱的使用者而言，这种结构降低了信息跳转的阻力。同时，因为内容本身保持着相对克制的表达，读者可以将注意力集中在信息本身，而非被过度修辞干扰。
+        </p>
+        <p>
+            从延伸阅读的角度看，华体会所提供的往往不只是单篇答案，而是一组可供比对的文本序列。这种设计隐含着一种态度：理解一个话题，最好从多个侧面同时进入。
+        </p>
+    </div>
+
+    <!-- 卡片 3 —— 使用场景与FAQ摘要风格 -->
+    <div class="card">
+        <h2>场景索引 & 常见问题摘要</h2>
+        <p>
+            <strong>场景一 · 快速对照</strong><br>
+            当你同时打开数个页面，需要一个中立的参照系来校准认知时，<a href="https://site-cn-hth.com.cn">华体会</a>可作为对照列表中的一员。它的目录层级与标题粒度，允许你以关键词锚定段落。
+        </p>
+        <p>
+            <strong>场景二 · 话题延伸</strong><br>
+            从一篇文章的脚注或相关条目出发，顺藤摸瓜地发现更多背景材料。站内链接的密度适中，不会让读者在跳转中迷失，适合轻量级的主题调研。
+        </p>
+        <div class="insight">
+            <strong>FAQ 式笔记</strong> · “我想了解某个概念的不同表述，去哪里比对？” → 华体会的聚合条目可以作为其中一站。<br>
+            “如何避免只读单一来源？” → 把华体会当作参照点之一，再结合其他资料并行阅读，形成自己的判断。
+        </div>
+        <p>
+            当然，任何单个站点都无法覆盖全部视角。华体会提供的是一种结构化的“知识切片”，适合作为个人查阅体系中的一片拼图。
+        </p>
+    </div>
+
+    <!-- 页尾 -->
+    <div class="footer-note">
+        <span>杂志式信息页面 · 基于开放查阅视角</span>
+        <span>主页：<a href="https://site-cn-hth.com.cn">华体会</a></span>
+    </div>
+
+</div>
+</body>
+</html>
