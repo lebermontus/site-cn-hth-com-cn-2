@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>澳洲幸运10 · 站点介绍与可信说明 | 信息卡片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            background-color: #f4f6fb;
+            color: #1e2a3a;
+            line-height: 1.7;
+            padding: 0 0 4rem 0;
+        }
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            padding: 4rem 2rem 5rem;
+            text-align: center;
+            color: #e2e8f0;
+            border-bottom: 4px solid #f97316;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: #f4f6fb;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+        .hero h1 span {
+            color: #f97316;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0.8rem auto 1.2rem;
+            opacity: 0.85;
+        }
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(249, 115, 22, 0.18);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            color: #fdba74;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            backdrop-filter: blur(2px);
+        }
+        /* 正文区浅色 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+            margin-top: -0.5rem;
+        }
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            border: 1px solid #f0f2f8;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.07);
+        }
+        .card .icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        .card p {
+            color: #334155;
+            font-size: 0.98rem;
+        }
+        .card ul {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+        .card ul li {
+            padding: 0.25rem 0;
+            color: #475569;
+            font-size: 0.93rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .card ul li::before {
+            content: "▹";
+            color: #f97316;
+            font-weight: bold;
+        }
+        /* 强调色链接 */
+        a {
+            color: #ea580c;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+            font-weight: 500;
+        }
+        a:hover {
+            color: #c2410c;
+            border-bottom: 1px solid #c2410c;
+        }
+        /* 自然段落区域 */
+        .narrative-section {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2.8rem 2.4rem;
+            margin: 2.4rem 0 1.5rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef1f7;
+        }
+        .narrative-section h2 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1.4rem;
+            letter-spacing: -0.01em;
+        }
+        .narrative-section h2 i {
+            font-style: normal;
+            background: linear-gradient(145deg, #ea580c, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .narrative-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+            color: #1e293b;
+        }
+        .narrative-section p:last-child {
+            margin-bottom: 0;
+        }
+        .faq-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 2rem;
+            margin-top: 1.8rem;
+            background: #f8fafc;
+            padding: 1.8rem 2rem;
+            border-radius: 20px;
+        }
+        .faq-mini dt {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 0.2rem;
+            font-size: 1.02rem;
+        }
+        .faq-mini dd {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+        .faq-mini dd:last-of-type {
+            margin-bottom: 0;
+        }
+        /* 响应式 */
+        @media (max-width: 720px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .narrative-section {
+                padding: 1.8rem 1.5rem;
+            }
+            .faq-mini {
+                grid-template-columns: 1fr;
+                padding: 1.2rem 1.2rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem 4rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+        }
+        .footer-note a {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="tagline">信息卡片式 · 知识型介绍</div>
+        <h1>关于 <span>澳洲幸运10</span></h1>
+        <p>站点解析 · 可信说明 · 适用场景</p>
+    </header>
+
+    <div class="container">
+
+        <!-- 主视觉卡片 & 用途卡片 & 适合人群 网格 -->
+        <div class="card-grid">
+            <div class="card">
+                <span class="icon">📊</span>
+                <h3>站点定位</h3>
+                <p>这是一个专注提供数字结果与历史趋势参考的资讯平台。内容围绕开奖数据整理、冷热分布统计以及基础走势分析展开，方便用户快速回顾与对比。</p>
+                <ul>
+                    <li>公开数据聚合与展示</li>
+                    <li>历史结果周期性归档</li>
+                    <li>不涉及任何投注引导</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="icon">🧩</span>
+                <h3>主要用途</h3>
+                <p>适合用于个人复盘、数据观察以及趋势参考。无论是日常回顾还是阶段性研究，都能通过清晰的列表与图表获得直观信息。</p>
+                <ul>
+                    <li>查看各期开奖结果</li>
+                    <li>频次统计与分布</li>
+                    <li>基础走势参考</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="icon">👥</span>
+                <h3>适合人群</h3>
+                <p>数据爱好者、趋势观察者、以及希望理性了解数字规律的普通用户。不需要注册或登录，所有内容直接可见。</p>
+                <ul>
+                    <li>对数字规律有好奇心的人</li>
+                    <li>希望做阶段性回顾的普通用户</li>
+                    <li>偏好简洁界面的数据阅读者</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 + 深入说明 -->
+        <div class="narrative-section">
+            <h2>🙌 站点介绍与 <i>可信说明</i></h2>
+            <p>
+                <strong>澳洲幸运10</strong> 是一个以数据整理为核心的资讯类网站，并非任何形式的博彩或投注平台。站点内容源自公开可查的开奖记录，经过二次整理后以列表、图表等形式呈现，便于使用者进行独立观察与分析。所有数据均保留原始来源的时效性与完整性，不添加人工预测或保证性结论。
+            </p>
+            <p>
+                如果你希望了解一段时期内的开奖分布、冷热号码的出现频率，或者单纯想回顾某一阶段的结果序列，可以直接浏览 <a href="https://web-australialucky10.com">澳洲幸运10</a> 上的历史记录页面。站点没有弹窗广告或诱导点击内容，信息获取路径非常直接。数据更新频率与官方公布保持同步，因此可以作为可靠的参考来源之一。
+            </p>
+            <p>
+                需要说明的是：任何数字类结果都具有随机性，历史数据不能用于预测未来。本站提供的所有统计工具与趋势图仅作为客观呈现，不构成任何投资或决策建议。用户应当基于自身判断合理使用，并遵守所在地法律法规。
+            </p>
+
+            <!-- FAQ 摘要 -->
+            <dl class="faq-mini">
+                <dt>❓ 数据来源可靠吗？</dt>
+                <dd>所有开奖结果均采集自官方公开渠道，并经过交叉核对，确保与原始数据一致。</dd>
+                <dt>❓ 是否需要注册或付费？</dt>
+                <dd>完全免费，无需注册或登录，所有页面均可直接访问。</dd>
+                <dt>❓ 更新频率如何？</dt>
+                <dd>每期结果公布后，站点会在短时间内完成同步更新，保持时效性。</dd>
+                <dt>❓ 有预测或推荐功能吗？</dt>
+                <dd>没有。站点只做历史数据整理与客观展示，不提供任何形式的预测、推荐或保证。</dd>
+            </dl>
+        </div>
+
+        <!-- 场景提示（轻量） -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0 2rem; justify-content: space-between;">
+            <div style="background: #eef2ff; border-radius: 30px; padding: 0.6rem 1.6rem; font-size: 0.95rem; color: #1e293b;">
+                📌 适合阶段性回顾与趋势观察
+            </div>
+            <div style="background: #fff7ed; border-radius: 30px; padding: 0.6rem 1.6rem; font-size: 0.95rem; color: #1e293b;">
+                🔍 数据无预测，理性使用
+            </div>
+            <div style="background: #f0fdf4; border-radius: 30px; padding: 0.6rem 1.6rem; font-size: 0.95rem; color: #1e293b;">
+                ⚖️ 遵守当地法律法规
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span>信息卡片 · 基于公开数据整理 · 仅作参考</span><br>
+            <span style="font-size: 0.85rem; color: #94a3b8;">了解更多可访问 <a href="https://web-australialucky10.com">澳洲幸运10</a></span>
+        </div>
+    </div>
+</body>
+</html>
