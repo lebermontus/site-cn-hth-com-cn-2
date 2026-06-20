@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 日常查询与参考</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            background-color: #f5f3f0;
+            color: #2c2a28;
+        }
+
+        /* 深色头图 —— 温和叙事调性 */
+        .hero {
+            background: linear-gradient(145deg, #1e1c1a 0%, #2b2825 70%, #3a3530 100%);
+            color: #e8e2da;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b8a99a 40%, #b8a99a 60%, transparent);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 350;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            color: #f0ebe3;
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #c5b8ab;
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4.5rem;
+            background-color: #fcfaf7;
+        }
+
+        .intro-text {
+            font-size: 1.12rem;
+            margin-bottom: 2.8rem;
+            color: #3b3733;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.4rem;
+        }
+
+        .intro-text a {
+            color: #9b6b43;
+            text-decoration: none;
+            border-bottom: 1px dotted #c9aa8b;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 450;
+        }
+
+        .intro-text a:hover {
+            color: #7a4f2e;
+            border-bottom: 1px solid #7a4f2e;
+        }
+
+        /* 特点列表 — 卡片式 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 3rem 0 2.5rem;
+        }
+
+        .feature-card {
+            background: #f7f3ed;
+            padding: 1.8rem 1.6rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
+            border-left: 4px solid #b29578;
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            background: #f2ece4;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #4f3d30;
+            letter-spacing: 0.3px;
+        }
+
+        .feature-card p {
+            font-size: 0.98rem;
+            color: #4d4742;
+            line-height: 1.6;
+        }
+
+        /* 场景引用块 */
+        .scene-block {
+            background: #eee9e2;
+            padding: 2rem 2rem 1.8rem;
+            border-radius: 20px;
+            margin: 2.8rem 0 2.2rem;
+        }
+
+        .scene-block h2 {
+            font-size: 1.5rem;
+            font-weight: 420;
+            margin-bottom: 1rem;
+            color: #3e362f;
+        }
+
+        .scene-block p {
+            margin-bottom: 0.9rem;
+            color: #3f3a35;
+        }
+
+        .scene-block a {
+            color: #9b6b43;
+            text-decoration: none;
+            border-bottom: 1px dotted #b99a7e;
+            transition: border 0.2s;
+        }
+
+        .scene-block a:hover {
+            border-bottom: 1px solid #9b6b43;
+        }
+
+        /* 温和的提示 / FAQ 摘要 */
+        .tip-note {
+            background: #f6f2ec;
+            border-radius: 14px;
+            padding: 1.6rem 2rem;
+            margin: 2.2rem 0;
+            border: 1px solid #e3d8cd;
+        }
+
+        .tip-note h3 {
+            font-weight: 420;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #4b3f35;
+        }
+
+        .tip-note p {
+            color: #4b4440;
+            font-size: 0.98rem;
+        }
+
+        .tip-note small {
+            color: #7f7167;
+            display: block;
+            margin-top: 0.8rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 2rem 0 0.5rem;
+            font-size: 0.9rem;
+            color: #8f867d;
+            border-top: 1px solid #e3dbd2;
+            margin-top: 3.5rem;
+        }
+
+        .footer-note a {
+            color: #7f6b5b;
+            text-decoration: none;
+            border-bottom: 1px dotted #b8a392;
+        }
+
+        .footer-note a:hover {
+            border-bottom: 1px solid #7f6b5b;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 680px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .content {
+                padding: 2rem 1.4rem 3rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1.3rem;
+            }
+            .scene-block {
+                padding: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>爱游戏 · 日常参考</h1>
+        <p class="sub">从一段查询开始，慢慢延伸为习惯性的对照与阅读。</p>
+    </section>
+
+    <main class="content">
+        <div class="intro-text">
+            <p>有些时候，我们只是想快速确认一个关卡细节、一段剧情的时间线，或者某个版本更新的具体条目。不需要夸张的推荐，也不必急于做决定。正是在这样的日常翻阅中，<a href="https://m-home-ayx.com">爱游戏</a>逐渐变成了手边一个安静的线索站 —— 它不强调自己有多全面，但总能让你在需要时找到恰当的对照。</p>
+            <p>最初只是随手打开，后来慢慢养成了习惯：写笔记之前先去对照一下，和朋友聊起某段支线时再回来翻翻描述。没有压力，没有催促，页面本身就像一本摊开的参考手册，等你根据自己的节奏停留或离开。</p>
+        </div>
+
+        <!-- 特点列表 -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>条目对照</h3>
+                <p>从系统说明到剧情索引，信息按模块组织，适合快速定位和交叉比对。没有多余装饰，重点在于内容的可查性。</p>
+            </div>
+            <div class="feature-card">
+                <h3>延伸阅读</h3>
+                <p>每一条目下通常附带相关话题或版本沿革，便于你在主信息之外自然扩展了解范围，而不必跳转太多页面。</p>
+            </div>
+            <div class="feature-card">
+                <h3>轻量界面</h3>
+                <p>结构清晰，层级克制。无论用手机还是桌面浏览，都能保持一致的阅读节奏，不被复杂布局干扰思路。</p>
+            </div>
+        </div>
+
+        <!-- 场景化描述 -->
+        <div class="scene-block">
+            <h2>某个傍晚的场景</h2>
+            <p>在查阅某个老游戏的更新日志时，发现页面里把前后几个版本的改动都列在了一张表里。原本只想确认一个日期，结果顺带看到了当时调整的数值说明，反而把之前模糊的理解补全了。后来每遇到类似的考据需求，总会先去 <a href="https://m-home-ayx.com">爱游戏</a> 翻一翻 —— 不一定每次都满载而归，但常有意外的小收获。</p>
+            <p>也有时候什么都不查，只是随便点开一个条目，读几段关于系统机制的说明，就像随手翻杂志一样自然。没有必须读完的压力，也没有弹窗提醒你“错过了什么”。</p>
+        </div>
+
+        <!-- 提示 / 阅读摘要 -->
+        <div class="tip-note">
+            <h3>几个使用中的小观察</h3>
+            <p>如果你习惯在做笔记时打开一个参考页面，可以试试把爱游戏放在浏览器的常驻标签页里；它的加载速度很轻，不会拖慢其他工作。另外，页面里的内部链接通常指向相关条目，适合顺着读下去 —— 但不顺着读也完全没问题。</p>
+            <p>如果你是第一次接触，不妨先用搜索框找一个你熟悉的游戏名称，看看它的条目结构和表述方式是否符合你的查阅习惯。</p>
+            <small>以上是基于个人使用的体会，每个站点都有自己的风格，适合与否还是要亲自试试看。</small>
+        </div>
+
+        <!-- 温和结尾 -->
+        <div style="margin: 2.2rem 0 1.8rem; font-style: normal; color: #4e4640;">
+            <p>翻阅本身就有它的价值 —— 不需要每次都带着明确的目的。慢慢浏览、偶尔对照，也是一种和游戏内容相处的方式。</p>
+        </div>
+
+        <div class="footer-note">
+            <span>一个你可以慢慢翻阅的地方 · <a href="https://m-home-ayx.com">爱游戏</a></span>
+            <br><span style="font-size: 0.8rem; color: #a89b8f;">日常查询 · 对照 · 延伸阅读</span>
+        </div>
+    </main>
+
+</body>
+</html>
