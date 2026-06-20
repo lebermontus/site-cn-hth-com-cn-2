@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奇异果体育 · 信息卡片索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f8fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1b2a3a;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* 主视觉——网格封面 */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-main {
+            background: linear-gradient(145deg, #0f2b3f, #1b4d5e);
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            color: #e5f4f0;
+            box-shadow: 0 12px 28px rgba(0, 30, 40, 0.12);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-main h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-main h1 span {
+            color: #7fd1cc;
+            border-bottom: 2px solid #59b3ab;
+            padding-bottom: 2px;
+        }
+
+        .hero-main p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            max-width: 90%;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(127, 209, 204, 0.18);
+            backdrop-filter: blur(2px);
+            padding: 0.35rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #b0e3de;
+            border: 1px solid rgba(127, 209, 204, 0.25);
+            width: fit-content;
+        }
+
+        .hero-secondary {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .hero-secondary .stat-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1rem 1.4rem;
+            box-shadow: 0 4px 12px rgba(0, 35, 50, 0.04);
+            border-left: 6px solid #279f94;
+            flex: 1;
+        }
+
+        .stat-card .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #13655b;
+            line-height: 1;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.85rem;
+            color: #3e5f6b;
+        }
+
+        .stat-card p {
+            font-size: 0.9rem;
+            color: #2d4a56;
+            margin-top: 0.3rem;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin: 2rem 0 1.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 6px 14px rgba(0, 25, 40, 0.04);
+            transition: all 0.15s ease;
+            border: 1px solid rgba(35, 135, 125, 0.08);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 28px rgba(0, 60, 70, 0.06);
+            border-color: #54b3a9;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+            display: inline-block;
+            background: #e8f5f2;
+            padding: 0.3rem 0.6rem;
+            border-radius: 14px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0d3b45;
+            margin: 0.4rem 0 0.6rem;
+            letter-spacing: -0.02em;
+        }
+
+        .card p, .card li {
+            font-size: 0.92rem;
+            color: #2b4d58;
+            line-height: 1.5;
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+            list-style: none;
+        }
+
+        .card ul li::before {
+            content: "▹ ";
+            color: #279f94;
+            font-weight: bold;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .tag {
+            background: #dff1ee;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #146b61;
+            font-weight: 500;
+        }
+
+        /* 自然链接段落（上下文卡片） */
+        .link-section {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin: 1.2rem 0 2rem;
+            border-left: 6px solid #2c8c82;
+            box-shadow: 0 6px 14px rgba(0, 30, 40, 0.02);
+        }
+
+        .link-section p {
+            font-size: 0.98rem;
+            color: #1d3b44;
+            margin-bottom: 0.75rem;
+        }
+
+        .link-section a {
+            color: #0f6b62;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1.5px solid #7fd1cc;
+            transition: border-color 0.15s;
+        }
+
+        .link-section a:hover {
+            border-bottom-color: #0b4f48;
+            color: #09433d;
+        }
+
+        .link-section .meta-note {
+            font-size: 0.85rem;
+            color: #4d707c;
+            background: #eef6f4;
+            border-radius: 30px;
+            padding: 0.3rem 1rem;
+            display: inline-block;
+            margin-top: 0.4rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            background: #e1f0ed;
+            border-radius: 1.8rem;
+            padding: 1.5rem 1.8rem;
+            margin: 1.2rem 0;
+        }
+
+        .faq-summary h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #093b41;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed rgba(40, 100, 95, 0.15);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #0d4741;
+            font-size: 0.92rem;
+        }
+
+        .faq-a {
+            font-size: 0.88rem;
+            color: #2c5b63;
+            padding-left: 0.5rem;
+        }
+
+        .faq-a a {
+            color: #0f6b62;
+            text-decoration: underline dotted 1px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #cfe3df;
+            margin: 2rem 0 0.5rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #55747d;
+            font-size: 0.8rem;
+            padding: 1.2rem 0 0.3rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 680px) {
+            body {
+                padding: 0.8rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .hero-main h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-main p {
+                max-width: 100%;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .link-section {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .faq-summary {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 主视觉网格 -->
+    <div class="hero-grid">
+        <div class="hero-main">
+            <h1>信息索引 · <span>奇异果体育</span></h1>
+            <p>从资料整理角度，梳理运动内容、参与方式与适用人群，形成可检索的轻量卡片式概览。</p>
+            <span class="hero-tag">📋 结构化卡片 · 2025</span>
+        </div>
+        <div class="hero-secondary">
+            <div class="stat-card">
+                <span class="stat-number">4</span>
+                <span class="stat-label">内容维度</span>
+                <p>运动类型 / 场景 / 人群 / 提示</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">8+</span>
+                <span class="stat-label">参考条目</span>
+                <p>卡片索引便于快速浏览</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 用途卡片（信息卡片式） -->
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon">🏸</div>
+            <h3>运动项目索引</h3>
+            <p>覆盖球类、竞技对抗、耐力训练等常见项目资料。各条目整理基础规则、场地要求与参与形式。</p>
+            <div class="tag-group">
+                <span class="tag">羽毛球</span>
+                <span class="tag">篮球</span>
+                <span class="tag">乒乓球</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon">📋</div>
+            <h3>场景与组织</h3>
+            <ul>
+                <li>俱乐部约战 / 业余联赛</li>
+                <li>个人训练计划参考</li>
+                <li>场地与器材信息整理</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-icon">🧑‍🤝‍🧑</div>
+            <h3>适合人群概览</h3>
+            <p>从运动新手到进阶爱好者，不同体能水平均可找到对应内容。包含基础动作要点与常见调整建议。</p>
+            <div class="tag-group">
+                <span class="tag">初学者</span>
+                <span class="tag">业余进阶</span>
+                <span class="tag">团体</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自然链接段落（嵌入奇异果体育） -->
+    <div class="link-section">
+        <p>该索引页汇集了与运动资料、参与方式相关的整理条目。若希望了解更完整的项目清单与动态信息，可参考<a href="https://root-qygsports.com">奇异果体育</a>中持续更新的内容模块。资料结构以分类卡片为主，便于快速定位感兴趣的运动类型。</p>
+        <p>部分卡片中的标签（如“羽毛球”“初学者”）对应常见检索字段，实际条目以平台所收录的范围为准。本页仅作索引摘要，详细说明请通过上述链接查阅原文。</p>
+        <span class="meta-note">📌 索引版本：v2.1 · 卡片内容仅为概要</span>
+    </div>
+
+    <!-- 额外特点卡片 (混合) -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0;">
+        <div style="background: white; border-radius: 1.5rem; padding: 1.4rem; border: 1px solid rgba(39, 159, 148, 0.15);">
+            <h4 style="color: #0a534a; font-weight: 600; font-size: 1rem; letter-spacing: -0.01em;">📎 条目字段说明</h4>
+            <p style="font-size: 0.9rem; color: #244a52;">每张卡片包含：运动名称、简要描述、标签、相关提示。部分卡片附带参考链接。</p>
+        </div>
+        <div style="background: white; border-radius: 1.5rem; padding: 1.4rem; border: 1px solid rgba(39, 159, 148, 0.15);">
+            <h4 style="color: #0a534a; font-weight: 600; font-size: 1rem; letter-spacing: -0.01em;">🔎 检索建议</h4>
+            <p style="font-size: 0.9rem; color: #244a52;">推荐使用关键词组合：运动类型 + 场景（如“篮球 俱乐部”“羽毛球 训练”）。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+        <h4>❓ 常见简问</h4>
+        <div class="faq-item">
+            <span class="faq-q">卡片中的运动项目是否定期更新？</span>
+            <span class="faq-a">索引内容会随资料整理周期同步，部分新增项目可留意平台动态。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">如何快速找到适合新手的运动？</span>
+            <span class="faq-a">可查看卡片中带“初学者”标签的条目，或参考<a href="https://root-qygsports.com">奇异果体育</a>中的入门专题。</span>
+        </div>
+        <div class="faq-item">
+            <span class="faq-q">是否有团体运动组织信息？</span>
+            <span class="faq-a">部分卡片包含俱乐部与业余赛事索引，具体组别需查看详细说明。</span>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        <span>资料索引页 · 信息卡片式概览 · 内容仅供参考</span>
+    </div>
+</div>
+</body>
+</html>
